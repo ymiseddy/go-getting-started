@@ -6,9 +6,12 @@ import (
 )
 
 func main() {
-	appConfig, err := config.ReadConfig()
+	appConfig := config.AppConfig{}
+	err := config.ReadConfigInto(&appConfig)
 	if err != nil {
 		panic(err)
 	}
 	fmt.Println(appConfig.Message)
+
+	fmt.Printf("Here's our config: %+v\n", appConfig)
 }
