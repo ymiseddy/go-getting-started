@@ -1,7 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/ymiseddy/go-getting-started/internal/config"
+)
 
 func main() {
-	fmt.Println("Hello, World!")
+	appConfig, err := config.ReadConfig()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(appConfig.Message)
 }
