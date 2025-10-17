@@ -17,6 +17,15 @@ type AppConfig struct {
 	TimeoutSeconds int    `env:"TIMEOUT_SECONDS,default=200"`
 }
 
+type DatabaseConfig struct {
+	DataSourceName string `env:"DB_DSN,required"`
+}
+
+type WebServerConfig struct {
+	Host string `env:"WEB_HOST,default=0.0.0.0"`
+	Port int    `env:"WEB_PORT,default=8080"`
+}
+
 func ReadConfigInto(target any) error {
 	// Load environment variables from .env file if it exists
 	_ = godotenv.Load()

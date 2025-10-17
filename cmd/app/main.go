@@ -6,12 +6,30 @@ import (
 )
 
 func main() {
+
 	appConfig := config.AppConfig{}
+	databaseConfig := config.DatabaseConfig{}
+	webServerConfig := config.WebServerConfig{}
+
 	err := config.ReadConfigInto(&appConfig)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(appConfig.Message)
 
-	fmt.Printf("Here's our config: %+v\n", appConfig)
+	err = config.ReadConfigInto(&databaseConfig)
+	if err != nil {
+		panic(err)
+	}
+
+	err = config.ReadConfigInto(&webServerConfig)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Printf("Application config: %+v\n", appConfig)
+	fmt.Printf("Database Config: %+v\n", databaseConfig)
+	fmt.Printf("Web Server Config: %+v\n", webServerConfig)
+
+	println(appConfig.Message)
+
 }
