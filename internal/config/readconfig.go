@@ -10,7 +10,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-// Primaryc application configuration structure
+// Primary application configuration structure
 type AppConfig struct {
 	Message        string `env:"APP_MESSAGE,default=Hello, World!"`
 	ApiKey         string `env:"API_KEY,required"`
